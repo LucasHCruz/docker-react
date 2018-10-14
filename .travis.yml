@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t lhmcdev/docker-react -f Dockerfile.dev .
+
+script:
+  - docker container run lhmcdev/docker-react npm run test -- --coverage
